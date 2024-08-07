@@ -27,6 +27,7 @@ public class Main {
             for (MenuCommand mc : MenuCommand.values()) {
                 if (commandArgs[0].equals(mc.getText())) {
                     menuCommand = mc;
+                    break;
                 }
             }
 
