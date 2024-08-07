@@ -33,4 +33,64 @@ public class MMOCharacter {
 
         return res.first;
     }
+
+    public int gathering() {
+        String urlToRead = "https://api.artifactsmmo.com/my/%s/action/gathering".formatted(name);
+
+
+        Pair<Integer, String> res = MyHTTPSRequest.postRequest(urlToRead, token, null);
+
+        System.out.println(res.last);
+
+        return res.first;
+    }
+
+    public int unequip(String slot) {
+        String urlToRead = "https://api.artifactsmmo.com/my/%s/action/unequip".formatted(name);
+
+        String data = """
+                    {
+                        "slot":"%s"
+                    }
+                    """.formatted(slot);
+
+        Pair<Integer, String> res = MyHTTPSRequest.postRequest(urlToRead, token, data);
+
+        System.out.println(res.last);
+
+        return res.first;
+    }
+
+    public int crafting(String code) {
+        String urlToRead = "https://api.artifactsmmo.com/my/%s/action/crafting".formatted(name);
+
+        String data = """
+                    {
+                        "code":"%s"
+                    }
+                    """.formatted(code);
+
+        Pair<Integer, String> res = MyHTTPSRequest.postRequest(urlToRead, token, data);
+
+        System.out.println(res.last);
+
+        return res.first;
+    }
+
+    public int equip(String code, String slot) {
+        String urlToRead = "https://api.artifactsmmo.com/my/%s/action/equip".formatted(name);
+
+        String data = """
+                    {
+                        "code":"%s",
+                        "slot":"%s"
+                    }
+                    """.formatted(code, slot);
+
+        Pair<Integer, String> res = MyHTTPSRequest.postRequest(urlToRead, token, data);
+
+        System.out.println(res.last);
+
+        return res.first;
+    }
 }
