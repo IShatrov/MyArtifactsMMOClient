@@ -10,7 +10,9 @@ public class MyHTTPSRequest {
         try {
             HttpsURLConnection connection = getHttpsURLConnection(urlToRead, token);
 
-            writeData(connection, data);
+            if (data != null) {
+                writeData(connection, data);
+            }
 
             connection.setConnectTimeout(1000);
             connection.setReadTimeout(1000);
@@ -23,7 +25,7 @@ public class MyHTTPSRequest {
 
             return new Pair<>(status, res);
         } catch (Exception ex) {
-            System.out.println("Failed to move");
+            System.out.println("Failed");
         }
 
         return new Pair<>(-1, null);

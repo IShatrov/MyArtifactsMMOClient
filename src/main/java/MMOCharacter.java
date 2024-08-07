@@ -8,7 +8,7 @@ public class MMOCharacter {
     }
 
     public int move(int x, int y) {
-        String urlToRead = "https://api.artifactsmmo.com/my/" + this.name + "/action/move";
+        String urlToRead = "https://api.artifactsmmo.com/my/%s/action/move".formatted(name);
 
         String data = """
                     {
@@ -18,6 +18,16 @@ public class MMOCharacter {
                     """.formatted(x, y);
 
         Pair<Integer, String> res = MyHTTPSRequest.postRequest(urlToRead, token, data);
+
+        System.out.println(res.last);
+
+        return res.first;
+    }
+
+    public int fight() {
+        String urlToRead = "https://api.artifactsmmo.com/my/%s/action/fight".formatted(name);
+
+        Pair<Integer, String> res = MyHTTPSRequest.postRequest(urlToRead, token, null);
 
         System.out.println(res.last);
 
