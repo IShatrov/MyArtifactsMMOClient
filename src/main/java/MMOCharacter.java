@@ -36,8 +36,7 @@ public class MMOCharacter {
 
     public int gathering() {
         String urlToRead = "https://api.artifactsmmo.com/my/%s/action/gathering".formatted(name);
-
-
+        
         Pair<Integer, String> res = MyHTTPSRequest.postRequest(urlToRead, token, null);
 
         System.out.println(res.last);

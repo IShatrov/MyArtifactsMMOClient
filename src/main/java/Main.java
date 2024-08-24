@@ -41,12 +41,7 @@ public class Main {
                     System.out.println("Thank you for playing!");
                     return;
                 }
-                default -> {
-                    int status = menuCommand
-                            .doAction(character, Arrays.copyOfRange(commandArgs, 1, commandArgs.length));
-
-                    System.out.println("status: " + status);
-                }
+                default -> menuCommand.doAction(character, Arrays.copyOfRange(commandArgs, 1, commandArgs.length));
             }
         }
     }
